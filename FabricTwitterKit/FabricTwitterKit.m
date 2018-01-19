@@ -156,6 +156,11 @@ RCT_EXPORT_METHOD(composeTweet:(NSDictionary *)options :(RCTResponseSenderBlock)
         [composer setText:body];
     }
 
+    if(options[@"image"]) {
+        UIImage *urlImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:options[@"image"]]]];
+        [composer setImage:urlImage];
+    }
+
     UIViewController *rootView = [UIApplication sharedApplication].keyWindow.rootViewController;
     [composer showFromViewController:rootView completion:^(TWTRComposerResult result) {
 

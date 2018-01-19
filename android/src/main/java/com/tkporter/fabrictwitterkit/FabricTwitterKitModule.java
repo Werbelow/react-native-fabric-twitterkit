@@ -88,8 +88,10 @@ public class FabricTwitterKitModule extends ReactContextBaseJavaModule implement
             this.callback = callback;
 
             String body = options.hasKey("body") ? options.getString("body") : "";
+            String image = options.hasKey("image") ? options.getString("image") : ""
 
-            TweetComposer.Builder builder = new TweetComposer.Builder(reactContext).text(body);
+
+            TweetComposer.Builder builder = new TweetComposer.Builder(reactContext).text(body).image(image);
             final Intent intent = builder.createIntent();
             reactContext.startActivityForResult(intent, REQUEST_CODE, intent.getExtras());
 
